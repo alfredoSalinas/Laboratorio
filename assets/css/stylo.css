@@ -1,0 +1,36 @@
+.contenedor{
+   display: grid;
+   grid-template: 60px 2fr 60px / 400px 1fr;
+   grid-template-areas: 
+   	"header header"
+   	"left contenido"
+   	"footer footer";
+   	grid-gap: 2px;
+   	height: 100vh;
+ }
+
+ .header{
+ 	grid-area: header;
+ }
+
+ .left{
+ 	grid-area: left;
+ }
+
+ .contenido{
+ 	grid-area: contenido;
+ }
+
+ .footer{
+ 	grid-area: footer;
+ }
+
+ 
+.item{
+   background-color: black;
+   padding: 5px;
+   font-family: arial;
+   color: white;
+   text-align: center;
+   border-radius: 10px;
+ }
