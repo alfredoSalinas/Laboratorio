@@ -27,6 +27,7 @@
         <thead>
             <tr>
                 <th>Nro.</th>
+                <th>RNI</th>
                 <th>CI</th>
                 <th>Nombre</th>
                 <th>Celular</th>
@@ -50,6 +51,13 @@
                     <form action="#" id="form" class="form-horizontal">
                         <input type="hidden" value="" name="id"/> 
                         <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Registro</label>
+                                <div class="col-md-9">
+                                    <input name="rni" placeholder="Registro Unico" class="form-control" type="text">
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3">Carnet</label>
                                 <div class="col-md-9">

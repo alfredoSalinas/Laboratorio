@@ -16,12 +16,12 @@ class Estudiante extends CI_Controller {
         $opcion = 'Estudiante';
         $data = array(
             'opcion'            => $opcion,
-            'controllerajax'    => 'Laboratorio/Estudiante/',
+            'controllerajax'    => 'index.php/Laboratorio/Estudiante/',
         );
         $data['vista']  = 'admin/v_estudiante';
-        //$this->administracion->plantilla('v_estudiante', $data);
-        $this->load->view('admin/frontend/header');
-        //$this->load->view('plantilla/header');
+        $this->load->view('plantilla/header');
+        $this->load->view('plantilla/menu');
+        $this->load->view('plantilla/navegation');
         $this->load->view($data['vista'],$data);
         $this->load->view('plantilla/footer');
     }
@@ -39,8 +39,6 @@ class Estudiante extends CI_Controller {
         foreach ($list as $d) {
             $no++;
             $row = array();
-
-            $row[] = '<a href="Estudiante/seleccionar?valor='.$d->id.'">select</a>';
             $row[] = $no;
             $row[] = $d->cu;
             $row[] = $d->ci;
@@ -109,10 +107,10 @@ class Estudiante extends CI_Controller {
         $data['inputerror'] = array();
         $data['status'] = TRUE;
 
-        if($this->input->post('nombre') == '')
+        if($this->input->post('cu') == '')
         {
-            $data['inputerror'][] = 'nombre';
-            $data['error_string'][] = 'El nombre es requerido';
+            $data['inputerror'][] = 'cu';
+            $data['error_string'][] = 'El CU es requerido';
             $data['status'] = FALSE;
         }
 

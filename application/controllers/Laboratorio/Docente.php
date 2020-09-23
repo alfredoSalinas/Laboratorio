@@ -41,6 +41,7 @@ class Docente extends CI_Controller {
             $row = array();
 
             $row[] = $no;
+            $row[] = $d->rni;
             $row[] = $d->ci;
             $row[] = $d->nombre_completo;
             $row[] = $d->celular;
@@ -66,10 +67,11 @@ class Docente extends CI_Controller {
      public function post_data()
     {
         $data = array(
-                'ci' => $this->input->post('ci'),
-                'nombre_completo' => $this->input->post('nombre_completo'),
-                'celular' => $this->input->post('celular'),
-            );
+            'rni' => $this->input->post('rni'),
+            'ci' => $this->input->post('ci'),
+            'nombre_completo' => $this->input->post('nombre_completo'),
+            'celular' => $this->input->post('celular'),
+        );
         return $data;
     }
 

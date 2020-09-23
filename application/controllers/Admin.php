@@ -11,7 +11,7 @@ class Admin extends CI_Controller {
 		$this->load->view('plantilla/header');
 		$this->load->view('plantilla/menu');
 		$this->load->view('plantilla/navegation');
-		$this->load->view('app/v_admin', $datos);
+		//$this->load->view('app/v_admin', $datos);
 		$this->load->view('plantilla/footer');
 	}
 }

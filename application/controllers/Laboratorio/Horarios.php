@@ -7,13 +7,13 @@ class Horarios extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$session = $this->session->has_userdata('usuario');
-		if($session){
+		//$session = $this->session->has_userdata('usuario');
+		//if($session){
 			$this->load->model('Crud_model');
-			$this->load->library('pdf_reportes');
-	    }else{
-	    	redirect(base_url()."index.php/Admin");
-	    }	
+			//$this->load->library('pdf_reportes');
+	    //}else{
+	    //	redirect(base_url()."index.php/Admin");
+	    //}	
 		
 	}
 

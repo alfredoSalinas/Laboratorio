@@ -16,12 +16,12 @@ class Materia extends CI_Controller {
         $opcion = 'Materia';
         $data = array(
             'opcion'            => $opcion,
-            'controllerajax'    => 'Laboratorio/Materia/',
+            'controllerajax'    => 'index.php/Laboratorio/Materia/',
         );
         $data['vista']  = 'admin/v_materia';
-        //$this->administracion->plantilla('v_estudiante', $data);
-        $this->load->view('admin/frontend/header');
-        //$this->load->view('plantilla/header');
+        $this->load->view('plantilla/header');
+        $this->load->view('plantilla/menu');
+        $this->load->view('plantilla/navegation');
         $this->load->view($data['vista'],$data);
         $this->load->view('plantilla/footer');
     }

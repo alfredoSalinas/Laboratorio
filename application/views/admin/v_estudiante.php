@@ -25,7 +25,6 @@
     <table id="table" cellspacing="0" width="100%" class="table table-striped mb-none">
         <thead>
             <tr>
-                <th>Seleccionar</th>
                 <th>Nro.</th>
                 <th>CU</th>
                 <th>CI</th>
@@ -51,22 +50,27 @@
                         <input type="hidden" value="" name="id"/> 
                         <div class="form-body">
                             <div class="form-group">
-                                <label class="control-label col-md-3">Nombre</label>
+                                <label class="control-label col-md-3">CU</label>
                                 <div class="col-md-9">
-                                    <input name="nombre" placeholder="Nombre Equipo" class="form-control" type="text">
+                                    <input name="cu" placeholder="Carnet Universitario" class="form-control" type="text">
                                     <span class="help-block"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Estado</label>
+                                <label class="control-label col-md-3">CI</label>
                                 <div class="col-md-9">
-                                    <select name="estado" class="form-control">
-                                        <option value="1">Activo</option>
-                                        <option value="0">Inactivo</option>
-                                    </select>
+                                    <input name="ci" placeholder="Carnet Identidad" class="form-control" type="text">
                                     <span class="help-block"></span>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Nombre</label>
+                                <div class="col-md-9">
+                                    <input name="nombre_completo" placeholder="Nombre Completo" class="form-control" type="text">
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            
                         </div>
                     </form>
                 </div>

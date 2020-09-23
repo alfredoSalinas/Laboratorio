@@ -1,13 +1,13 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Docente_model extends MY_Model {
+class Lista_asignacion_model extends MY_Model {
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->table  = 'docentes';
-        $this->column = array('id','rni','ci','nombre_completo', 'celular');
+        $this->table  = 'lista_asignaciones';
+        $this->column = array('id','id_docente','id_materia', 'grupo', 'cantidad', 'sigla','nombre_completo');
         $this->order  = array('id' => 'asc');
     }
     

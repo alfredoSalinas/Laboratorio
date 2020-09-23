@@ -18,14 +18,14 @@ class Programacion extends CI_Controller {
         $opcion = 'Programacion';
         $data = array(
             'opcion'            => $opcion,
-            'controllerajax'    => 'Laboratorio/Programacion/',
+            'controllerajax'    => 'index.php/Laboratorio/Programacion/',
             'estudiantes' => $estudiantes->result_array(),
             'asignaciones' => $asignaciones->result_array(),
         );
         $data['vista']  = 'admin/v_programacion';
-        //$this->administracion->plantilla('v_estudiante', $data);
-        $this->load->view('admin/frontend/header');
-        //$this->load->view('plantilla/header');
+        $this->load->view('plantilla/header');
+        $this->load->view('plantilla/menu');
+        $this->load->view('plantilla/navegation');
         $this->load->view($data['vista'],$data);
         $this->load->view('plantilla/footer');
     }

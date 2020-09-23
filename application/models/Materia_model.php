@@ -1,13 +1,13 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Docente_model extends MY_Model {
+class Materia_model extends MY_Model {
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->table  = 'docentes';
-        $this->column = array('id','rni','ci','nombre_completo', 'celular');
+        $this->table  = 'materias';
+        $this->column = array('id','sigla','nombre','nivel');
         $this->order  = array('id' => 'asc');
     }
     

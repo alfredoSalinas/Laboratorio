@@ -19,35 +19,45 @@
           <input type="hidden" name="id_estudiante" id="id_estudiante" value="{id}">
           <input type="hidden" name="cu" id="cu" value="{cu}">
           <input type="hidden" name="nombre_completo" id="nombre_completo" value="{nombre_completo}">
+
+                        <input type="hidden" value="" name="id"/> 
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">CU</label>
+                                <div class="col-md-9">
+                                    <input name="cu" placeholder="Carnet Universitario" class="form-control" type="text" value="{cu}">
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Nombre</label>
+                                <div class="col-md-9">
+                                    <input name="nombre_completo" placeholder="Nombre Completo" class="form-control" type="text" value="{nombre_completo}">
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            {/estudiante}
+                            {asignacion}
+                            <input type="hidden" name="id_asignacion"  value="{id}">
+          <div class="form-group">
+                                <label class="control-label col-md-3">Grupo : </label>
+                                <div class="col-md-9">
+                                    <input name="nombre_completo" placeholder="Nombre Completo" class="form-control" type="text" value="{grupo}">
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+        
+        <div class="form-group">
+                                <label class="control-label col-md-3">Docente : </label>
+                                <div class="col-md-9">
+                                    <input class="form-control" type="text" value="{nombre_completo}">
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
           
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="celular">C.U.:    </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">      
-              <h4>{cu}</h4>    
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="celular">ESTUDIANTE:</label>
-            <div class="col-md-6 col-sm-6 col-xs-12"><h4>{nombre_completo}</h4>
-            </div>
-          </div>
-          {/estudiante}
-          {asignacion}
-        <div class="form-group">    
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">GRUPO:</label>
-          <div class="col-md-6 col-sm-6 col-xs-12"><h4>{grupo}</h4>
-            </div>
-        </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="celular">DOCENTE:</label>
-            
-            <input type="hidden" name="id_asignacion" value="{id}">
-            <div class="col-md-6 col-sm-6 col-xs-12"><h4>{nombre_completo}</h4>
-            </div>
-            
-          </div>
         
         {/asignacion}
+
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="celular">CELULAR <span class="required">*</span>:
           </label>    
@@ -55,6 +65,12 @@
             <input type="text" id="celular" name="celular" required="required" class="form-control col-md-7 col-xs-12">
           </div>
         </div>
+                        </div>
+          
+          <div class="form-body">
+          
+          
+        
         <div class="ln_solid">
           
         </div>
@@ -64,6 +80,7 @@
           </div>
         </div>
       </form>
+    </div>
                   </div>
                 </div>
               </div>
