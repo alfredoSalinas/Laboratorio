@@ -6,12 +6,14 @@ class Asignacion extends CI_Controller {
     public function __construct() {
 
         parent::__construct();
-        $this->load->Model('Lista_asignacion_model','vista_dbase');
-        $this->load->Model('Asignacion_model','dbase');
-        $this->load->Model('Materia_model','materias');
-
-        //$this->load->library('Window');
-        //isLoggedIn();
+        $session = $this->session->has_userdata('usuario');
+        if($session){
+            $this->load->Model('Lista_asignacion_model','vista_dbase');
+            $this->load->Model('Asignacion_model','dbase');
+            $this->load->Model('Materia_model','materias');
+        }else{
+            redirect(base_url()."index.php/Admin");
+        }
     }
 
     public function index()

@@ -3,98 +3,93 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Horarios extends CI_Controller {
 
-	private $tabla= 'horarios';
+    public function __construct() {
 
-	function __construct(){
-		parent::__construct();
-		//$session = $this->session->has_userdata('usuario');
-		//if($session){
-			$this->load->model('Crud_model');
-			//$this->load->library('pdf_reportes');
-	    //}else{
-	    //	redirect(base_url()."index.php/Admin");
-	    //}	
-		
-	}
+        parent::__construct();
+        $session = $this->session->has_userdata('usuario');
+        if($session){
+            $this->load->Model('Horario_model','dbase');
+        }else{
+            redirect(base_url()."index.php/Admin");
+        }
+    }
 
-	public function index()
-	{
-    	$datos['contenido'] = 'estudiantes/index';
-	    $this->load->view('plantillas/plantilla', $datos);
-	}
+    public function index()
+    {       
+        $opcion = 'Horario';
+        $horas = $this->db->get('horas');
+        $asignaciones = $this->db->get('asignaciones');
+        $data = array(
+            'opcion'            => $opcion,
+            'controllerajax'    => 'index.php/Laboratorio/Horarios/',
+            'horas' => $horas->result_array(),
+            'asignaciones' => $asignaciones->result_array(),
+        );
+        $data['vista']  = 'admin/v_horarios';
+        $this->load->view('plantilla/header');
+        $this->load->view('plantilla/menu');
+        $this->load->view('plantilla/navegation');
+        $this->load->view($data['vista'],$data);
+        $this->load->view('plantilla/footer');
+    }
 
-	public function imprimir(){
-		$datos = $this->crud->get($this->tabla);
-	    $data['estudiantes'] = $datos->result_array();
-		$this->load->view('estudiantes/reportes', $data);
-	}
+     public function post_data()
+    {
+        $data = array(
+            'hora' => $this->input->post('hora'),
+            'dia' => $this->input->post('dia'),
+            'id_asignacion' => $this->input->post('id_asignacion'),
+        );
+        return $data;
+    }
 
-	public function nuevo(){
-		$data['contenido'] = 'estudiantes/nuevo';
-    	$this->administracion->plantilla('estudiantes/nuevo', $data);
-	}
+    public function ajax_edit($id)
+    {
+        $data = $this->dbase->get_by_id($id);
+        echo json_encode($data);
+    }
 
-	public function editar(){
-		$where['id'] = $this->input->get('valor');
-		$datos = $this->crud->get_where($this->tabla, $where);
-		$data = array(
-			'estudiante' => $datos->result_array() 
-		);
-    	$this->administracion->plantilla('estudiantes/editar', $data);
-	}	
+    public function ajax_add()
+    {
+        $this->_validate();
+        $data = $this->post_data();
+        $insert = $this->dbase->save($data);
+        echo json_encode(array("status" => TRUE));
+    }
 
-	public function insert()
-	{
-		$data['cu'] = $this->input->post('cu');
-		$data['ci'] = $this->input->post('ci');
-		$data['nombre_completo'] = $this->input->post('nombre_completo');
-		$data['celular'] = $this->input->post('celular');
-		$data['estado'] = $this->input->post('activo');
-		$this->crud->insert($this->tabla, $data);
-		redirect(base_url()."index.php/Laboratorio/Estudiantes/get");
-	}
+    public function ajax_update()
+    {
+        $this->_validate();
+        $data = $this->post_data();
+        $this->dbase->update($this->input->post('id'), $data);
+        echo json_encode(array("status" => TRUE));
+    }
 
-	public function get(){
-			$this->load->library('table');
-			$datos = $this->crud->get('horas');
-		    $data = array
-		    (
-		    	'dias' => $this->lib_horarios->crear()
-		    );
-		    $template = array(
-        		'table_open' => '<table class="table">'
-			);
+    public function ajax_delete($id)
+    {
+        $this->dbase->delete_by_id($id);
+        echo json_encode(array("status" => TRUE));
+    }
+    
+    private function _validate()
+    {
+        $data = array();
+        $data['error_string'] = array();
+        $data['inputerror'] = array();
+        $data['status'] = TRUE;
 
-			$this->table->set_template($template);
-		    //print_r($this->lib_horarios->crear());
-		    //$this->table->generate($this->lib_horarios->crear());
-		    $this->administracion->plantilla('horarios', $data);	
-	}
+        if($this->input->post('hora') == '')
+        {
+            $data['inputerror'][] = 'hora';
+            $data['error_string'][] = 'El campo hora es requerido';
+            $data['status'] = FALSE;
+        }
 
-	public function get_where($cu){
-		$where['cu'] = $cu;
-		$datos = $this->crud->get_where($this->tabla, $where);
-	    $data['estudiantes'] = $datos->result_array();
-	    $data['contenido'] = 'estudiantes/tabla';
-    	$this->load->view('plantillas/plantilla', $data);
+        if($data['status'] === FALSE)
+        {
+            echo json_encode($data);
+            exit();
+        }
+    }
 
-	}
-
-	public function update(){
-		$data['cu'] = $this->input->post('cu');
-		$data['ci'] = $this->input->post('ci');
-		$data['nombre_completo'] = $this->input->post('nombre_completo');
-		$data['celular'] = $this->input->post('celular');
-		$data['nivel'] = $this->input->post('nivel');
-		$data['estado'] = $this->input->post('estado');
-		$where['id'] = $this->input->post('id');
-		$this->crud->update($this->tabla, $data, $where);
-		redirect(base_url()."index.php/Laboratorio/Estudiantes/get");
-	}
-
-	public function delete(){
-		$where['id'] = $this->input->get('valor');
-		$tabla = $this->crud->delete($this->tabla, $where);
-		echo $tabla;
-	}
 }

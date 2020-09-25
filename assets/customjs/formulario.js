@@ -90,6 +90,11 @@ function get_table(titulo, controlador) //controller = baseurl+controller
     });
 }
 
+function set_controlador(controlador) //controller = baseurl+controller
+{
+    controller = controlador;
+}
+
 function add_row()
 {
     save_method = 'add';
@@ -267,7 +272,6 @@ function save_row()
             }
             else
             {
-                alert('mal');
                 for (var i = 0; i < data.inputerror.length; i++) 
                 {
                     $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class

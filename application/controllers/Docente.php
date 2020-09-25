@@ -42,8 +42,10 @@ class Docente extends CI_Controller {
 
 	public function salir(){
 		unset(
-	        $_SESSION['docente'],
-	        $_SESSION['id_docente']
+			$_SESSION['id_docente'],
+			$_SESSION['ci'],
+	        $_SESSION['docente']
+	        
 		);
 		redirect(base_url()."index.php/Docente");
 	}
