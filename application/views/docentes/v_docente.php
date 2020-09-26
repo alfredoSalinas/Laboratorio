@@ -51,11 +51,8 @@
             </td>
             <td>
                 <button type="button" class="mb-xs mt-xs mr-xs btn btn-xs btn-info" onclick="lista_estudiantes('<?php echo base_url().$controllerajax; ?>','1'); mostrar_estudiantes()">
-                            <i class="material-icons">create</i>
+                            <i class="material-icons">Lista</i>
                         </button>    
-                        <button type="button" class="mb-xs mt-xs mr-xs btn btn-xs btn-info" onclick="delete_row('.$d->id.')">
-                            <i class="material-icons">delete</i>
-                        </button>
             </td>
             </tr>
             <?php
