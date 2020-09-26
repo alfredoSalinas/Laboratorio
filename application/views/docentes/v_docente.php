@@ -50,7 +50,7 @@
             ?>
             </td>
             <td>
-                <button type="button" class="mb-xs mt-xs mr-xs btn btn-xs btn-info" onclick="edit_row('.$d->id.')">
+                <button type="button" class="mb-xs mt-xs mr-xs btn btn-xs btn-info" onclick="lista_estudiantes('<?php echo base_url().$controllerajax; ?>','1'); mostrar_estudiantes()">
                             <i class="material-icons">create</i>
                         </button>    
                         <button type="button" class="mb-xs mt-xs mr-xs btn btn-xs btn-info" onclick="delete_row('.$d->id.')">
@@ -63,54 +63,19 @@
             ?>
         </tbody>   
     </table>
-
     <div class="modal fade" id="modal_form">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3 class="modal-title"><?php echo $opcion; ?></h3>
+                    <h3 class="modal-title"></h3>
                 </div>
 
-                <div class="modal-body form">
-                    <form action="#" id="form" class="form-horizontal">
-                        <input type="hidden" value="" name="id"/> 
-                        <div class="form-body">
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Registro</label>
-                                <div class="col-md-9">
-                                    <input name="rni" placeholder="Registro Unico" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Carnet</label>
-                                <div class="col-md-9">
-                                    <input name="ci" placeholder="Carnet" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Nombre</label>
-                                <div class="col-md-9">
-                                    <input name="nombre_completo" placeholder="Nombre" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Celular</label>
-                                <div class="col-md-9">
-                                    <input name="celular" placeholder="Celular" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </form>
+                <div class="modal-body form" id="resultado">
+                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="btnSave" class="btn btn-info" onclick="save_row()">Guardar</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
             </div><!-- /.modal-content -->

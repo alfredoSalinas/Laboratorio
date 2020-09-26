@@ -37,4 +37,34 @@ class Docentes extends CI_Controller {
         $this->load->view('plantilla/footer');
     }
 
+    public function ajax_list(){
+    	$id = $this->input->post('num');
+    	$where = array('id' => $id, );
+    	$lista_estudiantes = $this->db->get_where('lista_estudiantes', $where)->result_array();
+    ?>
+    	<table id="table" cellspacing="0" width="100%" class="table table-striped mb-none">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>C.U.</th>
+                <th>Celular</th>
+            </tr>
+        </thead>
+        <tbody>
+    <?php
+    	foreach ($lista_estudiantes as $item) {
+    ?>
+    	<tr>
+    		<td><?php echo $item['nombre_completo'] ?></td>
+    		<td><?php echo $item['cu'] ?></td>
+    		<td><?php echo $item['celular'] ?></td>
+    	</tr>
+    <?php
+    	}
+    ?>
+        </tbody>   
+    </table>
+    <?php
+    }
+
 }

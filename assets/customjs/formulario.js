@@ -109,25 +109,17 @@ function add_row()
     $('#btnSave').show();
 }
 
-function mostrar_productos()
+function mostrar_estudiantes()
 {
-    save_method = 'add';
-    enabled_form();
-    $('#form')[0].reset(); // reset form on modals
-    //    $('#form select').select2("val", "");
-    //$('#form').trigger("reset");
-    $('.form-group').removeClass('has-error'); // clear error class
-    $('.help-block').empty(); // clear error string
-    $('#modal_producto').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Adicionar '+title); // Set Title to Bootstrap modal title
-    $('#btnSave').show();
+    $('#modal_form').modal('show'); // show bootstrap modal
+    $('.modal-title').text(''); // Set Title to Bootstrap modal title
 }
 
-function vender(controlador, numero){
+function lista_estudiantes(controlador, id_asignacion){
     controller = controlador;
-    num = numero;
+    num = id_asignacion;
     $.ajax({
-        url : controller + 'ajax_vender',
+        url : controller + 'ajax_list',
         data : {
             num : num,
         },
