@@ -27,26 +27,23 @@ class Programaciones extends CI_Controller {
     	}else{
     		$grupo = '';
     	}
-			$this->load->library('table');
-			$datos = $this->db->get('horas');
-		    $data = array
-		    (
-		    	'dias' => $this->lib_horarios->crear(),
-		    	'cu' => $this->session->cu,
-				'nombre' => $this->session->estudiante,
-				'grupo' => $grupo
-		    );
-		    $template = array(
-        		'table_open' => '<table class="table">'
-			);
+		$this->load->library('table');
+		$datos = $this->db->get('horas');
+	    $data = array
+	    (
+	    	'dias' => $this->lib_horarios->crear(),
+	    	'cu' => $this->session->cu,
+			'nombre' => $this->session->estudiante,
+			'grupo' => $grupo
+	    );
+	    $template = array(
+    		'table_open' => '<table class="table">'
+		);
 
-			$this->table->set_template($template);
-		    //print_r($this->lib_horarios->crear());
-		    //$this->table->generate($this->lib_horarios->crear());
-			//$this->administracion->plantilla('horarios', $data);
-			$this->load->view('plantilla/header');
-        $this->load->view('plantilla/menu');
-        $this->load->view('plantilla/navegation');
+		$this->table->set_template($template);
+		$this->load->view('plantilla/header');
+        $this->load->view('plantilla/menu_pro');
+        $this->load->view('plantilla/navegation_pro');
         $this->load->view('programaciones/horarios', $data); 
         $this->load->view('plantilla/footer');
 		    

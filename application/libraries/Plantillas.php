@@ -15,7 +15,8 @@ class Plantillas {
             'url' => base_url()
       );
     $this->CI->parser->parse('plantilla/header', $encabezado);
-    $this->CI->parser->parse('plantilla/menu', $encabezado);
+    $this->CI->parser->parse('plantilla/menu_pro', $encabezado);
+    $this->CI->parser->parse('plantilla/navegation_pro', $encabezado);
     $this->CI->parser->parse($tabla, $data);
     $this->CI->parser->parse('plantilla/footer', $encabezado);
   }
